@@ -1,4 +1,6 @@
 
+
+document.getElementById("panelInfo").style.display = "none";
 /* ----------------------- */
 /* - Initialisation velo - */
 /* ----------------------- */
@@ -66,6 +68,10 @@ class classe {
         this.dispoBike = dispoBike,
         this.open = open;
     }
+
+    removeBike() {
+        this.dispoBike--;
+    }
 }
 
 function marker(macarte, data) {
@@ -89,9 +95,9 @@ function marker(macarte, data) {
         let marqueur = L.marker([data[i].position.lat, data[i].position.lng], {icon: icone});
         let stationInfo = new classe(data[i].name, data[i].address, data[i].bike_stands, data[i].available_bike_stands, data[i].status);
         marqueur.addEventListener("click", function() {
-            display_info_velo(stationInfo);
-            evenement_reservation(stationInfo);
-        })
+            document.getElementById("panelInfo").style.display = "block";
+            display_all(stationInfo);
+        });
         // Création groupe marqueurs
         groupe_marqueur.addLayer(marqueur);
         macarte.addLayer(groupe_marqueur);
@@ -100,80 +106,3 @@ function marker(macarte, data) {
 }
 
 
-/* --------------------------------- */
-/* -- Affichage Information Velo -- */
-/* --------------------------------- */
-
-// Variables globales
-
-let infoVelo = {
-    div: document.getElementById("info_velo"),
-    address: document.createElement("p"),
-    velo: document.createElement("p"),
-    dispo: document.createElement("p")
-};
-infoVelo.div.appendChild(infoVelo.address);
-infoVelo.div.appendChild(infoVelo.velo);
-infoVelo.div.appendChild(infoVelo.dispo);
-
-let isSelected = false;
-
-function display_info_velo(stationInfo) {
-    // On vérifie que la station soit ouverte
-    if (stationInfo.open != "CLOSED") { // Teste maj et min
-        // Si l'adresse est invalide on affiche son nom
-        if (stationInfo.address == "") {
-            infoVelo.address.innerHTML = `addresse : ${stationInfo.name}`;
-            sessionStorage.setItem("nomStation", stationInfo.name);
-        }else {
-            infoVelo.address.innerHTML = `addresse : ${stationInfo.address}`;
-            sessionStorage.setItem("nomStation", stationInfo.address);
-
-        };
-        // Affichage nb de vélos dispo et en station
-        infoVelo.velo.innerHTML = ` ${stationInfo.numberBike} places`;
-        infoVelo.dispo.innerHTML = `${stationInfo.dispoBike} vélos disponibles`;
-        isSelected = true;
-        // Affichage station fermé
-    }else {
-        infoVelo.address.innerHTML = "En travaux";
-        infoVelo.velo.innerHTML = "";
-        infoVelo.dispo.innerHTML = "";
-        isSelected = false;
-    }
-
-}
-
-
-/* ------------------------------------------ */
-/* -- Affichage si la reservation a marché -- */
-/* ------------------------------------------ */
-
-
-// Variables globales
-
-let formulaire = {
-    prenom: document.getElementById("prenom"),
-    nom: document.getElementById("nom"),
-    send: document.getElementById("reserver"),
-    infoReservation: document.createElement("p")
-};
-document.getElementById("formulaire").appendChild(formulaire.infoReservation);
-
-function evenement_reservation(stationInfo) {
-    formulaire.send.addEventListener("click", function(){
-
-        if (prenom.value != "" && nom.value != "" && isSelected == true){
-            localStorage.setItem("prénom", formulaire.prenom.value);
-            localStorage.setItem("Nom", formulaire.nom.value);
-            formulaire.infoReservation.innerHTML = "Votre réservation à été faite";
-            display_info_reservation(stationInfo);
-        }
-        else if(isSelected == false) {
-            formulaire.infoReservation.innerHTML = "Veuillez séléctionnez un vélo valide";
-        }
-        else if(prenom.value == "" && nom.value == "" && isSelected == true) {
-            formulaire.infoReservation.innerHTML = "Veuillez remplir le formulaire";
-        }
-    });
-}

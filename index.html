@@ -28,33 +28,38 @@
         <div id="map"></div>
 
         <div id="panel">
-            <article id="info_velo">
-                <h2>VELO SELECTIONNE :</h2>
-            </article>
+            <div id="panelInfo">
+                <article id="info_velo">
+                    <h2>VELO SELECTIONNE :</h2>
+                </article>
 
-            <h2> RESERVER VOTRE VELO ICI : </h2>
-            <form method="" action="">
-                <fieldset id="formulaire">
-                    <div>
-                        <label for="prenom">Prénom : </label>
-                        <input type="text" name="prenom" required id="prenom">
+                <h2> RESERVER VOTRE VELO ICI : </h2>
+                <form method="" action="">
+                    <fieldset id="formulaire">
+                        <div>
+                            <label for="prenom">Prénom : </label>
+                            <input type="text" name="prenom" required id="prenom">
 
-                        <label for="nom">Nom : </label>
-                        <input type="text" name="nom" required id="nom">
-                    </div>
+                            <label for="nom">Nom : </label>
+                            <input type="text" name="nom" required id="nom">
+                        </div>
 
-                    <h3>SIGNATURE :</h3>
-                    <div id="signature">
-                        <canvas width="300" height="200" id="canevas"></canvas>
-                        <input type="button" id="clear" name="Recommencer" value="Effacer"></input>
-                    </div>
+                        <h3>SIGNATURE :</h3>
+                        <div id="signature">
+                            <canvas width="300" height="200" id="canevas"></canvas>
+                            <input type="button" id="clear" name="Recommencer" value="Effacer"></input>
+                        </div>
 
-                    <input type="button" value="Reserver" id="reserver">
-                </fieldset>
-            </form>
+                        <input type="button" value="Reserver" id="reserver">
+                    </fieldset>
+                </form>
+            </div>
+
         </div>
     </section>
     <footer id="reservation"></footer>
+
+    <script src="affichage.js"></script>
 
     <!-- Script pour le bon fonctionnement de la carte -->
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -66,6 +71,7 @@
 
     <!-- Script pour la reservation -->
     <script src="reservation.js"></script>
+
 
 </body>
 </html>
