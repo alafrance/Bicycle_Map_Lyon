@@ -1,0 +1,100 @@
+/* ---------------------  */
+/* ------- GENERAL ------ */
+/* ---------------------  */
+body {
+    margin: 0px;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+/* ---------------------  */
+/* ----- DIAPORAMA -----  */
+/* ---------------------  */
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: red;
+    font-family: 'Zhi Mang Xing', cursive;
+}
+
+
+/* ---------------------  */
+/* ------- CARTE -------  */
+/* ---------------------  */
+
+#section_article {
+    display: flex;
+}
+#map {
+    width: 60%;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+
+#panel, #map {
+    height: 800px;
+    border: 1px solid black;
+
+}
+
+/* ---------------------  */
+/* ----- PANNEAU -----    */
+/* ---------------------  */
+
+
+/* Général */
+
+#panel {
+    width: 40%;
+    margin-right: 15px;
+}
+
+
+
+/* Formulaire */
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    padding: 5px;
+}
+
+input, button, canvas {
+    margin-bottom: 15px;
+
+}
+input[type="text"] {
+    width: 20%;
+}
+
+h2 {
+    text-align: center;
+}
+
+input[type="submit"] {
+    width: 100px;
+}
+
+/* Canevas */
+#signature {
+    display: flex;
+    align-items: center;
+}
+canvas {
+    border: 1px solid black;
+}
+
+#clear {
+    width: 200px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+
+footer {
+    border: 1px solid black;
+}
