@@ -67,23 +67,20 @@ infoVelo.div.appendChild(infoVelo.dispo);
 
 let isSelected = false;
 
-function display_info_velo(stationInfo) {
-    // On vérifie que la station soit ouverte
-    if (stationInfo.open != "CLOSED") { // Teste maj et min
-        // Si l'adresse est invalide on affiche son nom
-        if (stationInfo.address == "") {
-            infoVelo.address.innerHTML = `addresse : ${stationInfo.name}`;
-            sessionStorage.setItem("nomStation", stationInfo.name);
-        }else {
-            infoVelo.address.innerHTML = `addresse : ${stationInfo.address}`;
-            sessionStorage.setItem("nomStation", stationInfo.address);
+function display_info_velo() {
 
-        };
+    document.getElementById("panelInfo").style.display = "block";
+
+    // On vérifie que la station soit ouverte
+    if (sessionStorage.getItem("stationVeloStatus") != "CLOSED") { // Teste maj et min
+         // Affichage addresse
+        infoVelo.address.innerHTML = `${sessionStorage.getItem("stationAddress")}`
         // Affichage nb de vélos dispo et en station
-        infoVelo.velo.innerHTML = ` ${stationInfo.numberBike} places`;
-        infoVelo.dispo.innerHTML = `${stationInfo.dispoBike} vélos disponibles`;
+        infoVelo.velo.innerHTML = ` ${sessionStorage.getItem("stationVelo")} places`;
+        infoVelo.dispo.innerHTML = `${sessionStorage.getItem("stationVeloDispo")} vélos disponibles`;
         isSelected = true;
         // Affichage station fermé
+
     }else {
         infoVelo.address.innerHTML = "En travaux";
         infoVelo.velo.innerHTML = "";
@@ -93,27 +90,26 @@ function display_info_velo(stationInfo) {
 
 }
 
+let nombreDeVelo = 0;
 
-
-function evenement_reservation(stationInfo) {
+function evenement_reservation() {
     formulaire.send.addEventListener("click", function(){
 
         if (prenom.value != "" && nom.value != "" && isSelected == true){
             localStorage.setItem("prénom", formulaire.prenom.value);
             localStorage.setItem("Nom", formulaire.nom.value);
 
-            // On recupere les informations de l'api storage
-            const nomStationSessionStorage = sessionStorage.getItem("nomStation");
-            const prenomLocalStorage = localStorage.getItem("prénom");
-            const nomLocalStorage = localStorage.getItem("Nom");
-
             // On affiche les informations de reservation
             formulaire.infoReservation.innerHTML = "Votre réservation à été faite";
-            eltFooter.infoFooter.innerHTML = `Vélo réservé à la station ${nomStationSessionStorage} par ${prenomLocalStorage} ${nomLocalStorage}`;
+            eltFooter.infoFooter.innerHTML = `Vélo réservé à la station ${sessionStorage.getItem("stationAddress")} par ${localStorage.getItem("prénom")} ${localStorage.getItem("Nom")}`;
 
             // On lance le décompte
             clearInterval(timer);
             decompte();
+            let nombreDeVelo = sessionStorage.getItem("stationVeloDispo");
+            nombreDeVelo--;
+            sessionStorage.setItem("stationVeloDispo", nombreDeVelo);
+            display_info_velo();
         }
         else if(isSelected == false) {
             formulaire.infoReservation.innerHTML = "Veuillez séléctionnez un vélo valide";
@@ -123,13 +119,4 @@ function evenement_reservation(stationInfo) {
         }
     });
 }
-
-
-
-
-function display_all(stationInfo) {
-    display_info_velo(stationInfo);
-    evenement_reservation(stationInfo);
-    stationInfo.removeBike();
-    display_info_velo(stationInfo);
-}
+evenement_reservation();

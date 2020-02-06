@@ -68,17 +68,12 @@ class classe {
         this.dispoBike = dispoBike,
         this.open = open;
     }
-
-    removeBike() {
-        this.dispoBike--;
-    }
 }
 
 function marker(macarte, data) {
     // Initialisation
     let i = 0;
     let groupe_marqueur = L.markerClusterGroup();
-    let x = 0;
 
     // Affiche les marqueurs, groupe et icone
     while (i != data.length){
@@ -95,8 +90,16 @@ function marker(macarte, data) {
         let marqueur = L.marker([data[i].position.lat, data[i].position.lng], {icon: icone});
         let stationInfo = new classe(data[i].name, data[i].address, data[i].bike_stands, data[i].available_bike_stands, data[i].status);
         marqueur.addEventListener("click", function() {
-            document.getElementById("panelInfo").style.display = "block";
-            display_all(stationInfo);
+            if (stationInfo.address == "") {
+                sessionStorage.setItem("stationAddress", stationInfo.name);
+            }else {
+                sessionStorage.setItem("stationAddress", stationInfo.address);
+            };
+            sessionStorage.setItem("stationVelo", stationInfo.numberBike);
+            sessionStorage.setItem("stationVeloDispo", stationInfo.dispoBike);
+            sessionStorage.setItem("stationVeloStatus", stationInfo.open);
+
+            display_info_velo();
         });
         // Création groupe marqueurs
         groupe_marqueur.addLayer(marqueur);

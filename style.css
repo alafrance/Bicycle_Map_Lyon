@@ -12,12 +12,47 @@ canvas {
 /* ---------------------  */
 /* ----- DIAPORAMA -----  */
 /* ---------------------  */
-
+header div {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
+header figure {
+    margin: 30px;
+}
+figcaption {
+    text-align: center;
+}
+header img {
+    width: auto;
+    height: 800px;
+}
+header article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+i {
+    cursor: pointer;
+}
 h1 {
     text-align: center;
     text-transform: uppercase;
     color: red;
     font-family: 'Zhi Mang Xing', cursive;
+}
+
+/* Font awesome */
+.fas {
+    font-size: 4em;
+    color: blue;
+}
+
+#stop, #lancer {
+    font-size: 4em;
 }
 
 
@@ -28,6 +63,7 @@ h1 {
 #section_article {
     display: flex;
 }
+
 #map {
     width: 60%;
     margin-left: 15px;
@@ -51,8 +87,6 @@ h1 {
     width: 40%;
     margin-right: 15px;
 }
-
-
 
 /* Formulaire */
 
@@ -95,7 +129,13 @@ canvas {
 }
 
 
-footer {
+#reservation {
     display: flex;
     justify-content: space-between;
 }
+footer {
+    text-align: center;
+    margin: 10px;
+}
+
+
