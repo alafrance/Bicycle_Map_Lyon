@@ -90,6 +90,7 @@ function marker(macarte, data) {
         let marqueur = L.marker([data[i].position.lat, data[i].position.lng], {icon: icone});
         let stationInfo = new classe(data[i].name, data[i].address, data[i].bike_stands, data[i].available_bike_stands, data[i].status);
         marqueur.addEventListener("click", function() {
+            
             if (stationInfo.address == "") {
                 sessionStorage.setItem("stationAddress", stationInfo.name);
             }else {
@@ -99,7 +100,14 @@ function marker(macarte, data) {
             sessionStorage.setItem("stationVeloDispo", stationInfo.dispoBike);
             sessionStorage.setItem("stationVeloStatus", stationInfo.open);
 
-            display_info_velo();
+            // Si nous avons une reservation en cours, afficher les informations de la reservation en cours
+            if (stationInfo.name == reservationEnCoursAddress || stationInfo.address == reservationEnCoursAddress){
+                display_info_velo(reservationEnCoursAddress, reservationEnCoursVelo, reservationEnCoursDispo);
+            }
+            // Affiche par défaut les informations de résérvations
+            else {
+                display_info_velo(sessionStorage.getItem("stationAddress"), sessionStorage.getItem("stationVelo"), sessionStorage.getItem("stationVeloDispo"));
+            }
         });
         // Création groupe marqueurs
         groupe_marqueur.addLayer(marqueur);
