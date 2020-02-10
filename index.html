@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte lyon vélo - Projet 3</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
     <!-- Leaflet et sa librairie-->
@@ -12,75 +14,82 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
 
     <!-- Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ddc2bafeff.js" crossorigin="anonymous"></script>
 
 
 </head>
-<body >
+<body>
     <!-- Section diaporama -->
-    <header>
-        <h1>Les velos de lyon en libre service </h1>
-        <article>
+    <header class="container-fluid">
+        <h1 class="center uppercase">Site de reservation de vélo à Lyon</h1>
+        <figure class="row">
             <i class="fas fa-arrow-circle-left" id="avant"></i>
-            <figure>
-                <img src="./images/vélo_1.jpg" alt="Diaporama" id="diaporama">
-                <figcaption id="legende">
-                    Bienvenue!<br>
-                    Vous trouverez sur ce site tous les vélos en libre service de lyon<br>
-                    Vous pourrez même en reserver !
-                </figcaption>
-            </figure>
+            <img src="./images/vélo_1.jpg" alt="Diaporama" id="diaporama" class="col-6 p-0 pl-3">
+            <figcaption class="col d-flex flex-column justify-content-center align-items-center">
+                <h2 class="uppercase" id="legendeTitle">bienvenue !</h2>
+                <p id="legende" class="center">
+                    Sur notre site, vous retrouverez tous les vélos en libre service à Lyon.<br>
+                    Vous pourrez même en réserver !
+                </p>
+                <img src="./images/rentBicycle.jpg" alt="Image légende" id="imageFigcaption" class="marge">
+                <div class="alert alert-info marge" role="alert" id="alertDiapo"></div>
+            </figcaption>
             <i class="fas fa-arrow-circle-right" id="apres"></i>
-        </article>
-        <div>
-            <i class="far fa-pause-circle" id="stop"></i>
-			<i class="far fa-play-circle" id="lancer"></i>
-        </div>
+        </figure>
     </header>
+    <div class="center">
+        <i class="far fa-play-circle" id="stop"></i>
+    </div>
 
     <!-- Section map et panel -->
-    <section id="section_article">
-        <div id="map"></div>
+    <section id="section_article" class="container-fluid ">
+        <h1>Vous pouvez réservez votre vélo grâce à la carte interactive et au panneau juste à coté :</h1>
+        <div class="row">
+            <div id="map" class="col-6"></div>
 
-        <div id="panel">
-            <div id="panelInfo">
-                <article id="info_velo">
-                    <h2>VELO SELECTIONNE :</h2>
-                </article>
+            <aside class="col-6 fondPanel">
+                <div id="panelInfo">
+                    <div id="info_velo"></div>
 
-                <h2> RESERVER VOTRE VELO ICI : </h2>
-                <form method="" action="">
                     <fieldset id="formulaire">
-                        <div>
                             <label for="prenom">Prénom : </label>
                             <input type="text" name="prenom" required id="prenom">
 
                             <label for="nom">Nom : </label>
                             <input type="text" name="nom" required id="nom">
-                        </div>
 
+                            <input type="button" value="Reserver" id="reserver">
+                    </fieldset>
+
+                    <div>
                         <h3>SIGNATURE :</h3>
                         <div id="signature">
                             <canvas width="300" height="200" id="canevas"></canvas>
                             <input type="button" id="clear" name="Recommencer" value="Effacer"></input>
-                        </div> 
+                        </div>
+                    </div>
 
-                        <input type="button" value="Reserver" id="reserver">
-                    </fieldset>
-                </form>
-            </div>
+                </div>
 
+            </aside>
         </div>
+
+
     </section>
+
     <div id="reservation"></div>
-    <footer>
+
+    <footer class="center">
         Ce site a été construit pour la formation développeur web junior sur <a href="https://openclassrooms.com/fr/">Openclassrooms.com</a><br>
         Et les images et les logos viennent de <a href="https://fr.freepik.com">Freepik.com</a>
     </footer>
 
 
+    <!-- Script diaporama -->
     <script src="diaporama.js"></script>
+
+    <!-- Script affichage information vélo -->
     <script src="affichage.js"></script>
 
     <!-- Script pour le bon fonctionnement de la carte -->

@@ -1,14 +1,28 @@
 
 const slideshow = document.getElementById("diaporama");
 const legende = document.getElementById("legende");
-let images = ["./images/vélo_1.jpg", "./images/vélo_2.jpg", "./images/vélo_3.jpg", "./images/vélo_4.jpg"];
-let legendeText = [4];
-legendeText[0] = "Bienvenue!<br>Vous trouverez sur ce site tous les vélos en libre service de Lyon<br>Vous pourrez même en reserver sur notre site!"
-legendeText[1] = "Vous aimez le vélo ? Vous pourrez en faire très facilement grâce à notre site de réservation de vélo";
-legendeText[2] = "Vous avez 20 minutes pour utiliser nos vélos mis à disposition dans tout Lyon";
-legendeText[3] = "Et dernièrement, vous n'aurez même pas besoin de vous encombrer de matériels de vélo ! Tout se trouve dans nos stands en libre service";
+const legendeh2 = document.getElementById("legendeTitle");
+const imageFigcaption = document.getElementById("imageFigcaption")
+document.getElementById("alertDiapo").style.display = "none";
+
+const images = ["./images/vélo_1.jpg", "./images/vélo_2.jpg","./images/vélo_3.jpg","./images/vélo_4.jpg"]
+const imagesFigcaption = ["./images/rentBicycle.jpg", "./images/velove.jpg","./images/fast_bike.jpg", "./images/velo_rapide.png"];
+
+const legendeTitle = [];
+legendeTitle[0] = "bienvenue !";
+legendeTitle[1] = "Reservation facile";
+legendeTitle[2] = "Reservation rapide et simple";
+legendeTitle[3] = "Reservation sans encombrement";
+
+const legendeText = [];
+legendeText[0] = "Sur notre site, vous retrouverez tous les vélos en libre service à Lyon.<br>Vous pourrez même en réserver !";
+legendeText[1] = "Vous aimez le vélo ?<br>Notre application est faite pour que vous appréciez au maximum votre trajet en vélo.";
+legendeText[2] = "Pendant 20 minutes vous pourrez profitez pleinement de votre vélo commandé.";
+legendeText[3] = "Nous mettons tout à disposition dans nos stands !<br> Vous n'avez besoin de vous encombrer d'aucun matériel";
+
 let i = 0;
 var lancer;
+let stop = false;
 function play(){
 	lancer = setInterval(function() {
 		if (i < images.length - 1) {
@@ -19,21 +33,30 @@ function play(){
 		}
 		slideshow.src = images[i];
 		legende.innerHTML = legendeText[i];
+		legendeh2.innerHTML = legendeTitle[i];
+		imageFigcaption.src = imagesFigcaption[i];
+
 	}, 5000);
 }
 
-function demarrer() {
-	const  boutonLancer = document.getElementById("lancer");
-	boutonLancer.addEventListener("click", function(){
-		clearInterval(lancer);
-		play();
-	});
-}
+function bouton() {
+	const  boutonDiapo = document.getElementById("stop");
+	boutonDiapo.addEventListener("click", function(){
+		if (boutonDiapo.classList.value == "far fa-pause-circle"){
+			clearInterval(lancer);
+			play();
+			boutonDiapo.className = "far fa-play-circle";
+			document.getElementById("alertDiapo").style.display = "none";
+			stop = false;
+		}
+		else if (boutonDiapo.classList.value == "far fa-play-circle"){
+			clearInterval(lancer);
+			boutonDiapo.className = "far fa-pause-circle";
+			document.getElementById("alertDiapo").style.display = "block";
+			document.getElementById("alertDiapo").innerHTML = "Votre diaporama est en pause";
+			stop = true;
+		}
 
-function stop() {
-	const  boutonStop = document.getElementById("stop");
-	boutonStop.addEventListener("click", function(){
-		clearInterval(lancer);
 	});
 }
 
@@ -47,7 +70,12 @@ function apres() {
 	}
 	slideshow.src = images[i];
 	legende.innerHTML = legendeText[i];
-	play();
+	legendeh2.innerHTML = legendeTitle[i];
+	imageFigcaption.src = imagesFigcaption[i];
+
+	if (!(stop)){
+		play();
+	}
 }
 
 function avant() {
@@ -59,7 +87,12 @@ function avant() {
 	}
 	slideshow.src = images[i];
 	legende.innerHTML = legendeText[i];
-	play();
+	legendeh2.innerHTML = legendeTitle[i];
+	imageFigcaption.src = imagesFigcaption[i];
+
+	if (stop == false){
+		play();
+	}
 }
 
 function onClickAvant() {
@@ -78,11 +111,11 @@ function onClickApres() {
 
 }
 play();
-stop();
-demarrer();
+bouton();
 onClickAvant();
 onClickApres();
 
+// Gerer les touches du clavier : fleche gauche et fleche droite
 document.addEventListener("keydown", function(e){
 	if (e.keyCode == 39) {
 		apres();
@@ -90,5 +123,5 @@ document.addEventListener("keydown", function(e){
 	if (e.keyCode == 37) {
 		avant();
 	}
-	
-})
+
+});

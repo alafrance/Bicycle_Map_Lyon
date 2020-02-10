@@ -1,141 +1,84 @@
-/* ---------------------  */
-/* ------- GENERAL ------ */
-/* ---------------------  */
+@charset "UTF-8";
+/*------------------- */
+/*----- GENERAL ----- */
+/*------------------- */
+* {
+  font-family: 'Oswald', sans-serif; }
+
 body {
-    margin: 0px;
-}
+  background-color: #b2a790; }
 
-canvas {
-    border: 1px solid black;
-}
-
-/* ---------------------  */
-/* ----- DIAPORAMA -----  */
-/* ---------------------  */
-header div {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 100px;
-}
-header figure {
-    margin: 30px;
-}
-figcaption {
-    text-align: center;
-}
-header img {
-    width: auto;
-    height: 800px;
-}
-header article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-i {
-    cursor: pointer;
-}
 h1 {
-    text-align: center;
-    text-transform: uppercase;
-    color: red;
-    font-family: 'Zhi Mang Xing', cursive;
-}
+  font-size: 3.5em;
+  color: #353232; }
 
-/* Font awesome */
+.center {
+  text-align: center; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+.marge {
+  margin-top: 50px; }
+
+/*------------------- */
+/*---- DIAPORAMA ---- */
+/*------------------- */
+/* Bordure diaporama et img */
+header {
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px; }
+  header figure {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 3px solid #b2a790;
+    border-radius: 20px;
+    background-color: #f7ffef;
+    margin-bottom: 0px;
+    position: relative; }
+    header figure img {
+      border: 3px solid #f7ffef;
+      border-radius: 10px; }
+
+/* Icone font-awesome position et taille */
 .fas {
-    font-size: 4em;
-    color: blue;
-}
+  top: 45%;
+  position: absolute;
+  color: #bcd4de;
+  font-size: 3.5em;
+  cursor: pointer;
+  margin: 8px; }
 
-#stop, #lancer {
-    font-size: 4em;
-}
+.fa-arrow-circle-left {
+  left: 0%;
+  z-index: 1; }
 
+.fa-arrow-circle-right {
+  right: 0%; }
 
-/* ---------------------  */
-/* ------- CARTE -------  */
-/* ---------------------  */
+.far {
+  font-size: 3.5em;
+  cursor: pointer;
+  color: #bcd4de; }
 
-#section_article {
-    display: flex;
-}
+/* Légende */
+figcaption p, figcaption h2 {
+  color: #353232; }
+figcaption h2 {
+  text-decoration: underline;
+  font-size: 3em; }
+figcaption p {
+  font-size: 1.5em;
+  margin: 10px; }
 
+/*------------------- */
+/*------- MAP ------- */
+/*------------------- */
 #map {
-    width: 60%;
-    margin-left: 15px;
-    margin-right: 20px;
-}
+  height: 700px; }
 
-#panel, #map {
-    height: 800px;
-    border: 1px solid black;
+.fondPanel {
+  background-color: white; }
 
-}
-
-/* ---------------------  */
-/* ----- PANNEAU -----    */
-/* ---------------------  */
-
-
-/* Général */
-
-#panel {
-    width: 40%;
-    margin-right: 15px;
-}
-
-/* Formulaire */
-
-fieldset {
-    display: flex;
-    flex-direction: column;
-    border: 0;
-    padding: 5px;
-}
-
-input, button, canvas {
-    margin-bottom: 15px;
-
-}
-input[type="text"] {
-    width: 20%;
-}
-
-h2 {
-    text-align: center;
-}
-
-input[type="submit"] {
-    width: 100px;
-}
-
-/* Canevas */
-#signature {
-    display: flex;
-    align-items: center;
-}
-canvas {
-    border: 1px solid black;
-}
-
-#clear {
-    width: 200px;
-    height: 50px;
-    margin-left: 20px;
-}
-
-
-#reservation {
-    display: flex;
-    justify-content: space-between;
-}
-footer {
-    text-align: center;
-    margin: 10px;
-}
-
-
+/*# sourceMappingURL=style.css.map */

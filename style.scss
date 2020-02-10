@@ -1,0 +1,113 @@
+@import "./sass/color.scss";
+// gray, bone, green, blue, aqua,
+
+
+
+/*------------------- */
+/*----- GENERAL ----- */
+/*------------------- */
+
+
+*{
+    font-family: 'Oswald', sans-serif;
+
+}
+
+body {
+    background-color: $bone;
+}
+
+h1{
+    font-size: 3.5em;
+    color: #353232;
+}
+
+.center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+.marge {
+    margin-top: 50px;
+}
+
+/*------------------- */
+/*---- DIAPORAMA ---- */
+/*------------------- */
+
+/* Bordure diaporama et img */
+
+$paddingHeader: 30px;
+header{
+    padding-top: $paddingHeader;
+    padding-right: $paddingHeader;
+    padding-left: $paddingHeader;
+    figure {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 3px solid $bone ;
+        border-radius: 20px;
+        background-color: $gray;
+        margin-bottom: 0px;
+        position: relative;
+        img {
+            border: 3px solid $gray;
+            border-radius: 10px;
+        }
+    }
+}
+
+/* Icone font-awesome position et taille */
+
+.fas {
+    top: 45%;
+    position: absolute;
+    color: $aqua;
+    font-size: 3.5em;
+    cursor: pointer;
+    margin: 8px;
+}
+.fa-arrow-circle-left{
+    left: 0%;
+    z-index: 1;
+}
+.fa-arrow-circle-right {
+    right: 0%;
+}
+
+.far {
+    font-size: 3.5em;
+    cursor: pointer;
+    color: $aqua;
+}
+
+/* Légende */
+
+figcaption{
+    p, h2{
+        color: #353232;
+    }
+    h2{
+        text-decoration: underline;
+        font-size: 3em;
+
+    }
+    p{
+        font-size: 1.5em;
+        margin: 10px;
+    }
+}
+
+/*------------------- */
+/*------- MAP ------- */
+/*------------------- */
+
+#map{
+    height: 700px;
+}
+
+.fondPanel {
+    background-color: white;
+}

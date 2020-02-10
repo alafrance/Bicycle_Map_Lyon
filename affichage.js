@@ -120,7 +120,7 @@ function evenement_reservation() {
             formulaire.infoReservation.innerHTML = "Veuillez séléctionnez un vélo valide";
         }
         // Si le formulaire n'est pas rempli
-        else if(prenom.value == "" && nom.value == "") {
+        else if(prenom.value == "" || nom.value == "") {
             formulaire.infoReservation.innerHTML = "Veuillez remplir le formulaire";
         }
         // Si tout est bon pour la réservation
