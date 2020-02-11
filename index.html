@@ -22,67 +22,72 @@
 <body>
     <!-- Section diaporama -->
     <header class="container-fluid">
-        <h1 class="center uppercase">Site de reservation de vélo à Lyon</h1>
+        <h1 class="center uppercase bold">Site de reservation de vélo à Lyon</h1>
         <figure class="row">
             <i class="fas fa-arrow-circle-left" id="avant"></i>
-            <img src="./images/vélo_1.jpg" alt="Diaporama" id="diaporama" class="col-6 p-0 pl-3">
+            <img src="./images/vélo_1.jpg" alt="Diaporama" id="diaporama" class="col-lg-6 col-md-12">
             <figcaption class="col d-flex flex-column justify-content-center align-items-center">
-                <h2 class="uppercase" id="legendeTitle">bienvenue !</h2>
+                <h2 class="uppercase underline" id="legendeTitle">bienvenue !</h2>
                 <p id="legende" class="center">
                     Sur notre site, vous retrouverez tous les vélos en libre service à Lyon.<br>
-                    Vous pourrez même en réserver !
+                    Vous pourrez même en réserver!
                 </p>
-                <img src="./images/rentBicycle.jpg" alt="Image légende" id="imageFigcaption" class="marge">
-                <div class="alert alert-info marge" role="alert" id="alertDiapo"></div>
+                <img src="./images/rentBicycle.jpg" alt="Image légende" id="imageFigcaption" class="margeTop col-sm-6">
+                <div class="alert alert-info margeTop" role="alert" id="alertDiapo"></div>
             </figcaption>
             <i class="fas fa-arrow-circle-right" id="apres"></i>
         </figure>
     </header>
     <div class="center">
-        <i class="far fa-play-circle" id="stop"></i>
+        <i class="far fa-play-circle margeLittleTop" id="stop"></i>
     </div>
-
+    <hr>
     <!-- Section map et panel -->
     <section id="section_article" class="container-fluid ">
-        <h1>Vous pouvez réservez votre vélo grâce à la carte interactive et au panneau juste à coté :</h1>
+        <h1 class="center margeBottom bold">Vous pouvez réservez votre vélo en cliquant sur un marqueur:</h1>
         <div class="row">
-            <div id="map" class="col-6"></div>
+            <div id="map" class="col-lg-6 col-md-6 borderRadiusLeft"></div>
 
-            <aside class="col-6 fondPanel">
+            <aside class="col-lg-6 col-md-6 fond borderRadiusRight" id="panel">
                 <div id="panelInfo">
-                    <div id="info_velo"></div>
-
-                    <fieldset id="formulaire">
-                            <label for="prenom">Prénom : </label>
+                    <div id="info_velo">
+                        <h2 class="center bold">Votre vélo sélectionné :</h2>
+                    </div>
+                    <hr>
+                    <fieldset id="formulaire" class="bordure center col-lg-5 d-flex container flex-column relative">
+                        <h3 class="absolute bold">Réserver</h3>
+                            <label for="prenom" class="underline">Prénom : </label>
                             <input type="text" name="prenom" required id="prenom">
 
-                            <label for="nom">Nom : </label>
+                            <label for="nom" class="underline">Nom : </label>
                             <input type="text" name="nom" required id="nom">
 
-                            <input type="button" value="Reserver" id="reserver">
+                            <input type="button" value="Reserver" id="demandeSignature">
                     </fieldset>
-
-                    <div>
-                        <h3>SIGNATURE :</h3>
-                        <div id="signature">
-                            <canvas width="300" height="200" id="canevas"></canvas>
-                            <input type="button" id="clear" name="Recommencer" value="Effacer"></input>
+                    <div class="container col-lg-5 bordure margeTop relative none" id="signatureDiv">
+                        <h3 class="absolute bold">SIGNATURE :</h3>
+                        <div id="signature" class="d-flex flex-column align-items-center">
+                            <canvas id="canevas" width="300" height="auto" class="bordure margeLittleTop"></canvas>
+                            <div>
+                                <input type="button" id="clear" name="Recommencer" value="Effacer"></input>
+                                <input type="button" id="reserver" name="Reserver" value="Reserver"></input>
+                            </div>
                         </div>
                     </div>
-
+                          
                 </div>
-
+                
             </aside>
         </div>
 
 
     </section>
 
-    <div id="reservation"></div>
+    <div id="reservation" class="container center"></div>
 
     <footer class="center">
-        Ce site a été construit pour la formation développeur web junior sur <a href="https://openclassrooms.com/fr/">Openclassrooms.com</a><br>
-        Et les images et les logos viennent de <a href="https://fr.freepik.com">Freepik.com</a>
+        <p>Ce site a été construit pour la formation développeur web junior sur <a href="https://openclassrooms.com/fr/">Openclassrooms.com</a></p>
+        <p>Et les images et les logos viennent de <a href="https://fr.freepik.com">Freepik.com</a></p>
     </footer>
 
 
