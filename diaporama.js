@@ -27,7 +27,7 @@ const legendeText = [];
 legendeText[0] = "Sur notre site, vous retrouverez tous les vélos en libre service à Lyon.<br>Vous pourrez même en réserver!";
 legendeText[1] = "Vous aimez le vélo ?<br>Notre application est faite pour que vous appréciez au maximum votre trajet en vélo.";
 legendeText[2] = "Pendant 20 minutes vous pourrez profitez pleinement de votre vélo commandé.";
-legendeText[3] = "Nous mettons tout à disposition dans nos stands !<br> Vous n'avez besoin de vous encombrer d'aucun matériel";
+legendeText[3] = "Nous mettons tout à disposition dans nos stands !<br> Vous n'avez pas besoin de vous encombrer de matériel";
 
 
 // Variables globales

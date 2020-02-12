@@ -113,8 +113,8 @@ function display_info_velo() {
          // Affichage addresse
         infoVelo.address.innerHTML = `Ce stand se situe : ${sessionStorage.getItem("stationAddress")}`
         // Affichage nb de vélos dispo et en station
-        infoVelo.velo.innerHTML = ` Le nombre de vélos : ${sessionStorage.getItem("stationVelo")} places`;
-        infoVelo.dispo.innerHTML = ` Le nombre de vélos disponibles : ${sessionStorage.getItem("stationVeloDispo")} `;
+        infoVelo.velo.innerHTML = ` Nombre de place de vélos : ${sessionStorage.getItem("stationVelo")} places`;
+        infoVelo.dispo.innerHTML = `Nombre de vélos disponibles : ${sessionStorage.getItem("stationVeloDispo")} `;
         isAvailable = true;
         // Affichage station fermé
 
