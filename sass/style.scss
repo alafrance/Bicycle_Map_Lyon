@@ -1,4 +1,5 @@
 @import "color.scss";
+@import "responsive.scss";
 // gray, bone, green, blue, aqua,
 //
 $paddingSection: 30px;
@@ -11,7 +12,6 @@ $radius: 10px;
 
 *{
     font-family: 'Oswald', sans-serif;
-
 }
 
 body {
@@ -85,31 +85,39 @@ header{
         margin-bottom: 0px;
         position: relative;
     }
+
+    /* Icone font-awesome position et taille */
+
+    .fas {
+        top: 45%;
+        position: absolute;
+        color: $aqua;
+        font-size: 3.5em;
+        cursor: pointer;
+        margin: 8px;
+    }
+    .fa-arrow-circle-left{
+        left: 0%;
+        z-index: 1;
+    }
+    .fa-arrow-circle-right {
+        right: 0%;
+    }
+    
+    .far {
+        font-size: 3.5em;
+        cursor: pointer;
+        color: $aqua;
+    }
 }
-
-/* Icone font-awesome position et taille */
-
-.fas {
-    top: 45%;
-    position: absolute;
-    color: $aqua;
+.far{
     font-size: 3.5em;
     cursor: pointer;
-    margin: 8px;
-}
-.fa-arrow-circle-left{
-    left: 0%;
-    z-index: 1;
-}
-.fa-arrow-circle-right {
-    right: 0%;
+    color: $aqua;
+
 }
 
-.far {
-    font-size: 3.5em;
-    cursor: pointer;
-    color: $aqua;
-}
+
 
 /* Légende */
 
@@ -197,9 +205,15 @@ footer {
     display: flex;
     justify-content: space-around;
     margin-top: 15px;
+    .fas.fa-angle-up {
+        font-size: 2em;
+        cursor: pointer;
+    }
 }
 
 #info_velo {
     text-align: center;
 }
+
+
     

@@ -1,0 +1,14 @@
+@media screen and (max-width: 610px) {
+    #avant, #apres {
+        position: absolute;
+        top: 102%;
+    }
+    #stop {
+        margin-top: 25px;
+    }
+    figcaption {
+        h2 {
+            text-align: center;
+        }
+    }
+}

@@ -104,7 +104,10 @@ function marker(macarte, data) {
                 sessionStorage.setItem("stationVeloDispo", nombreDeVeloAffichage)
             }
             formulaire.panel.style.padding = "10px 0 30px 0px";
+            Canevas.isDisplay(false);
             display_info_velo();
+            document.location.href = "#panel";
+
         });
         // Création groupe marqueurs
         groupe_marqueur.addLayer(marqueur);
