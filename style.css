@@ -75,8 +75,7 @@ header {
     border-radius: 20px;
     background-color: #f7ffef;
     margin-bottom: 0px;
-    position: relative;
-    height: 1277px; }
+    position: relative; }
   header .fas {
     top: 45%;
     position: absolute;

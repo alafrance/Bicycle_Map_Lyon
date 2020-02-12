@@ -1,4 +1,4 @@
-// On crée une classe pour gérer le dom
+// On crée une classe pour gérer le dom 
 class CanevasClasse {
     constructor(canvas, boutonClear, signatureDiv){
         this.canvas = canvas,
