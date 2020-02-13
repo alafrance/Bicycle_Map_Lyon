@@ -18,7 +18,7 @@ body {
     background-color: $bone;
 }
 
-h1{
+h1, h2.center{
     font-size: 3.5em;
     color: #353232;
 }
@@ -76,7 +76,7 @@ header{
     padding-top: $paddingSection;
     padding-right: $paddingSection;
     padding-left: $paddingSection;
-    figure {
+    article {
         padding-top: 15px;
         padding-bottom: 15px;
         border: 3px solid $bone ;
@@ -121,7 +121,7 @@ header{
 
 /* Légende */
 
-figcaption{
+header{
     p, h2{
         color: #353232;
     }
