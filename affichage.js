@@ -72,7 +72,6 @@ function panel_info() {
     // On lance le decompte
     decompte();
 
-    
 }
 
 
@@ -102,6 +101,8 @@ let reservationEnCoursAddress = "";
 let reservationEnCoursVelo = "";
 let reservationEnCoursDispo = "";
 
+let $regex = /^[^@&"()!_$*€£`+=\/;?#0-9]+$/;
+
 // Affiche dans le panneau les informations
 
 function display_info_velo() {
@@ -126,28 +127,27 @@ function display_info_velo() {
     }
 
 }
-
 // Quand on clique sur Reserver du formulaire
 formulaire.send.addEventListener("click", function(){
+    document.getElementById("formulaire").appendChild(formulaire.infoReservation);
     // Si il n'y a plus de vélo
     if (sessionStorage.getItem("stationVeloDispo")  == 0) {
-        document.getElementById("formulaire").appendChild(formulaire.infoReservation);
         formulaire.infoReservation.className = "alert alert-danger";
         formulaire.infoReservation.innerHTML = "Il n'y a plus de vélos disponibles";
     }
-    // Si il y a une réservation en cours et que le marqueur séléctionné est la reservation
-    
     // Si il y a des travaux
     else if(isAvailable == false) {
-        document.getElementById("formulaire").appendChild(formulaire.infoReservation);
         formulaire.infoReservation.className = "alert alert-danger";
         formulaire.infoReservation.innerHTML = "Veuillez séléctionnez un vélo valide";
     }
     // Si le formulaire n'est pas rempli
     else if(prenom.value == "" || nom.value == "") {
-        document.getElementById("formulaire").appendChild(formulaire.infoReservation);
         formulaire.infoReservation.className = "alert alert-danger";
         formulaire.infoReservation.innerHTML = "Veuillez remplir le formulaire";
+    }
+    else if(!($regex.test(prenom.value) && $regex.test(nom.value) )) {
+        formulaire.infoReservation.className = "alert alert-danger";
+        formulaire.infoReservation.innerHTML = "Veuillez utiliser des caractères valides";
     }
     // Si tout est bon pour la réservation
     else{
@@ -158,16 +158,17 @@ formulaire.send.addEventListener("click", function(){
         // On affiche le panneau de signature
         Canevas.isDisplay(true);
     }
-    
+
 });
 
 // Quand on clique sur Reserver la signature
 formulaire.reserve.addEventListener("click", function(){
 
+    // Si il y a une réservation en cours et que le marqueur séléctionné est la reservation
     if (isReserved && reservationEnCoursAddress == sessionStorage.getItem("stationAddress")) {
         document.getElementById("signatureDiv").appendChild(formulaire.infoReservation);
         formulaire.infoReservation.className = "alert alert-danger";
-        formulaire.infoReservation.innerHTML = "Vous avez déja réservé un vélo ici";  
+        formulaire.infoReservation.innerHTML = "Vous avez déja réservé un vélo ici";
     }
     else {
     // On affiche les informations de reservation
