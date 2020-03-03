@@ -80,7 +80,7 @@ function marker(macarte, data) {
 
         // Icone
         let icone = L.icon({
-            iconUrl: "marker_icon.svg",
+            iconUrl: "images/marker_icon.svg",
             iconSize:  [40, 40],
             iconAnchor: [25, 50],
             popupAnchor: [-5, -50],
