@@ -60,3 +60,33 @@ Canevas.boutonClear.addEventListener("click", function() {
     context.clearRect(0, 0, 300, 200);
 });
 
+/*  ---------------- */
+/*  Signature mobile */
+/*  ---------------- */
+
+let xT = 0;
+let yT = 0;
+let isDrawingT = false;
+// Touchpad
+Canevas.canvas.addEventListener("touchstart", function(e){
+    e.preventDefault;
+    isDrawingT = true;
+    var oRect = canevas.getBoundingClientRect();
+    xT = e.touches[0].clientX - oRect.left;
+    yT = e.touches[0].clientY - oRect.top;
+});
+
+Canevas.canvas.addEventListener("touchmove", function(e){
+    e.preventDefault;
+    if (isDrawingT == true){
+        var oRect = canevas.getBoundingClientRect();
+        dessiner(xT, yT, e.touches[0].clientX - oRect.left, e.touches[0].clientY - oRect.top);
+        xT = e.touches[0].clientX - oRect.left;
+        yT = e.touches[0].clientY - oRect.top;
+        }
+});
+
+Canevas.canvas.addEventListener("touchend", function(e){
+    e.preventDefault;
+    isDrawingT = false;
+});

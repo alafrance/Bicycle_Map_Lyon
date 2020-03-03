@@ -101,7 +101,7 @@ let reservationEnCoursAddress = "";
 let reservationEnCoursVelo = "";
 let reservationEnCoursDispo = "";
 
-let $regex = /^[^@&"()!_$*€£`+=\/;?#0-9]+$/;
+let regex = /^[^@&"()!_$*€£`+=\/;?#0-9]+$/;
 
 // Affiche dans le panneau les informations
 
@@ -145,7 +145,7 @@ formulaire.send.addEventListener("click", function(){
         formulaire.infoReservation.className = "alert alert-danger";
         formulaire.infoReservation.innerHTML = "Veuillez remplir le formulaire";
     }
-    else if(!($regex.test(prenom.value) && $regex.test(nom.value) )) {
+    else if(!(regex.test(prenom.value) && regex.test(nom.value) )) {
         formulaire.infoReservation.className = "alert alert-danger";
         formulaire.infoReservation.innerHTML = "Veuillez utiliser des caractères valides";
     }
